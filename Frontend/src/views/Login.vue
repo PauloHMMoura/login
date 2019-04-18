@@ -12,7 +12,7 @@
 <template>
   <form>
     <v-flex xs12 sm6 offset-sm3>
-      <v-card style="padding:10px; margin:10px;" class="transparento">
+      <v-card style="padding:10px; margin-top:20px;" class="transparento">
 
         <v-flex text-xs-center>
           <h1 style="margin-top:10px;">LOGIN</h1>
@@ -23,12 +23,9 @@
         <v-text-field outline v-model="name" v-validate="'required|max:20'" :error-messages="errors.collect('name')"
           label="Username" data-vv-name="name" required></v-text-field>
 
-        <!--<v-text-field outline v-model="password" v-validate="'required|max:password'" 
-          :error-messages="errors.collect('password')" label="Password" data-vv-name="password" required></v-text-field>-->
-
         <v-text-field outline v-model="password" :append-icon="show1 ? 'visibility' : 'visibility_off'"
           :rules="[rules.required, rules.min]" :type="show1 ? 'text' : 'password'" name="input-10-1"
-          label="Password" @click:append="show1 = !show1">
+          label="Password" @click:append="show1 = !show1" v-validate="'required'" :error-messages="errors.collect('password')" data-vv-name="password" required>
         </v-text-field>
 
         <v-checkbox v-model="remember" v-validate="" :error-messages="errors.collect('checkbox')" value="1"
@@ -38,8 +35,9 @@
           <v-btn align-center @click="submit" large color="primary">SIGN IN</v-btn>
           <br><br>
 
-          <p>Don't have an account?<v-btn to="/Register" flat color="primary" dark> Sign up</v-btn>
-          </p>
+          <h3>Don't have an account?<v-btn to="/Register" flat color="primary" dark> Sign up</v-btn>
+          </h3><br>
+          <a>Forgot password?</a>
 
         </div>
       </v-card>
@@ -64,11 +62,8 @@
       checkbox: null,
 
       show1: false,
-        show2: true,
-        show3: false,
-        show4: false,
         rules: {
-          required: value => !!value || 'Required.',
+          //required: value => !!value || 'Required.',
           emailMatch: () => ('The email and password you entered don\'t match')
         },
 
@@ -79,8 +74,17 @@
         },
         custom: {
           name: {
-            required: () => 'Name can not be empty',
+            required: () => 'Please insert your username',
             max: 'The Username field may not be greater than 20 characters'
+            // custom messages
+          },
+          select: {
+            required: 'Select field is required'
+          }
+        },
+        custom: {
+          password: {
+            required: () => 'Please insert your password'
             // custom messages
           },
           select: {

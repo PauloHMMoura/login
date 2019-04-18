@@ -5,8 +5,8 @@
 </style>
 
 <template>
-    <v-flex style="margin-top:10px;" xs12 sm8 offset-sm2>
-        <v-stepper v-model="e1">
+    <v-flex style="margin-top:20px;" xs12 sm8 offset-sm2>
+        <v-stepper style="border-radius:10px;" v-model="e1">
             <!--head text-->
             <v-flex xs12 text-xs-center>
                 <h1 style="margin-top:10px; margin-bottom:10px;">REGISTER</h1>

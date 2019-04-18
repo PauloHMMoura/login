@@ -16,6 +16,10 @@
 
 <template>
   <v-app>
+    <!--fontawesome icons load-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="shortcut icon" href="./assets/logo.png">
+
     <v-toolbar app style="background-color:red;">
       <v-toolbar-title class="headline text-uppercase">
         <!--<v-btn to="/Home">--><a href="app.vue"><img class="logologo" src="./assets/logotemplate1.svg"></a>
@@ -24,12 +28,33 @@
 
       <v-btn to="/Login" color="error" dark @click="expand = !expand">Login</v-btn>
 
-
     </v-toolbar>
 
     <v-content>
       <router-view></router-view>
     </v-content>
+
+    <!--footer-->
+    <v-footer style="margin-top:20px;" dark height="auto">
+      <v-card class="flex" flat tile>
+        <v-card-title style="height: 60px;" class="red">
+          <strong class="subheading"></strong>
+
+          <v-spacer></v-spacer>
+
+          <div style="margin-top: -10px;">
+            <v-btn v-for="icon in icons" :key="icon" class="mx-3" dark icon>
+            <v-icon size="24px">{{ icon }}</v-icon>
+          </v-btn>
+          </div>
+        </v-card-title>
+
+        <v-card-actions class="grey darken-3 justify-center">
+          &copy;2019 — <strong>RA.CA</strong>
+        </v-card-actions>
+      </v-card>
+    </v-footer>
+
   </v-app>
 </template>
 
@@ -41,10 +66,13 @@
     components: {
       HelloWorld
     },
-    data() {
-      return {
-        //
-      }
-    }
+    data: () => ({
+      icons: [
+        'fab fa-facebook',
+        'fab fa-twitter',
+        'fab fa-linkedin',
+        'fab fa-instagram'
+      ]
+    })
   }
 </script>
