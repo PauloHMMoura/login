@@ -20,24 +20,28 @@
 
         <br>
 
-        <v-text-field outline v-model="name" v-validate="'required|max:20'" :error-messages="errors.collect('name')"
-          label="Username" data-vv-name="name" required></v-text-field>
+        <v-text-field prepend-icon="person" outline v-model="name" v-validate="'required'"
+          :error-messages="errors.collect('name')" label="Username" data-vv-name="name" required></v-text-field>
 
-        <v-text-field outline v-model="password" :append-icon="show1 ? 'visibility' : 'visibility_off'"
-          :rules="[rules.required, rules.min]" :type="show1 ? 'text' : 'password'" name="input-10-1"
-          label="Password" @click:append="show1 = !show1" v-validate="'required'" :error-messages="errors.collect('password')" data-vv-name="password" required>
+        <v-text-field prepend-icon="lock" outline v-model="password"
+          :append-icon="show1 ? 'visibility' : 'visibility_off'" :rules="[rules.required, rules.min]"
+          :type="show1 ? 'text' : 'password'" name="input-10-1" label="Password" @click:append="show1 = !show1"
+          v-validate="'required'" :error-messages="errors.collect('password')" data-vv-name="password" required>
         </v-text-field>
 
-        <v-checkbox v-model="remember" v-validate="" :error-messages="errors.collect('checkbox')" value="1"
-          label="Remember Me" data-vv-name="checkbox" type="checkbox"></v-checkbox>
+        <v-checkbox style="margin-left: 30px;" v-model="remember" v-validate=""
+          :error-messages="errors.collect('checkbox')" value="1" label="Remember Me" data-vv-name="checkbox"
+          type="checkbox"></v-checkbox>
 
         <div class="text-xs-center">
-          <v-btn align-center @click="submit" large color="primary">SIGN IN</v-btn>
+          <v-btn align-center @click="submit" large color="primary"><div></div>SIGN IN</v-btn>
           <br><br>
 
           <h3>Don't have an account?<v-btn to="/Register" flat color="primary" dark> Sign up</v-btn>
-          </h3><br>
-          <a>Forgot password?</a>
+          </h3>
+
+          <!--remove to servlist-->
+          <v-btn flat style="color: #dadada;">Forgot password?</v-btn>
 
         </div>
       </v-card>
@@ -62,10 +66,10 @@
       checkbox: null,
 
       show1: false,
-        rules: {
-          //required: value => !!value || 'Required.',
-          emailMatch: () => ('The email and password you entered don\'t match')
-        },
+      rules: {
+        //required: value => !!value || 'Required.',
+        emailMatch: () => ('The email and password you entered don\'t match')
+      },
 
       dictionary: {
         attributes: {
@@ -74,8 +78,7 @@
         },
         custom: {
           name: {
-            required: () => 'Please insert your username',
-            max: 'The Username field may not be greater than 20 characters'
+            required: () => 'Please insert your username'
             // custom messages
           },
           select: {
@@ -105,9 +108,6 @@
     }
   }
 </script>
-
-
-
 
 <!--<template>
     <v-layout row wrap>

@@ -19,7 +19,7 @@
             </v-card-title>
             <v-card-actions>
               <v-btn flat color="primary"></v-btn>
-              <v-btn flat color="primary">info</v-btn>
+              <v-btn flat color="primary">Listings</v-btn>
             </v-card-actions>
           </v-card>
         </v-flex>
